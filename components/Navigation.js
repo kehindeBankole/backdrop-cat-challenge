@@ -14,6 +14,7 @@ import {
   textColorActive,
   textColorInActive,
 } from "../constants/colors";
+import MyCats from "../screens/MyCats";
 const Tab = createBottomTabNavigator();
 
 function Article() {
@@ -59,12 +60,15 @@ export function Navigation() {
       />
       <Tab.Screen
         name="Home"
-        component={Article}
+        component={MyCats}
         options={{
           tabBarLabel: "Home",
           tabBarIcon: ({ focused }) => (
             <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <LoveSvg color={focused ? textColorActive : textColorInActive} />
+              <LoveSvg
+                color={focused ? textColorActive : textColorInActive}
+                strokeColor={focused ? textColorActive : textColorInActive}
+              />
               <Text
                 style={{
                   ...styles.navName,

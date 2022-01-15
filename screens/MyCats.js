@@ -1,23 +1,26 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-  FlatList,
-} from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, FlatList, StatusBar } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import CatDetails from "../components/CatDetails";
 import { bgColor } from "../constants/colors";
-import { useFetch } from "../hooks/useFetch";
-
-export default function Home() {
-  const [data] = useFetch("https://api.thecatapi.com/v1/breeds");
+export default function MyCats() {
+  const [data, setData] = useState([]);
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@storage_Key");
+      if (value !== null) {
+        console.log(JSON.parse(value).length);
+        setData(JSON.parse(value));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    getData();
+  });
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>All cats</Text>
       <FlatList
         removeClippedSubviews={true}
         onEndReachedThreshold={0}
