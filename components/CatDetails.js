@@ -34,9 +34,6 @@ export default function CatDetails({ item }) {
     }
     //   }
   }
-  //   useEffect(() => {
-  //     console.log(catArray.length);
-  //   }, [catArray]);
   return (
     <View>
       <View style={styles.catContainer}>
@@ -58,7 +55,7 @@ export default function CatDetails({ item }) {
           <LoveSvg
             color={cat === item ? "red" : "white"}
             strokeColor={cat === item ? "red" : textColorInActive}
-            size={15}
+            size={18}
           />
         </TouchableOpacity>
       </View>

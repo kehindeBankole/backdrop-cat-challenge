@@ -25,6 +25,7 @@ export default function Home() {
         data={data}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => <CatDetails item={item} />}
+        keyExtractor={(item) => item.id}
         style={{ flex: 1 }}
       />
     </View>
@@ -40,5 +41,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 10,
+    fontSize: 16,
+    fontWeight: "600",
   },
 });
